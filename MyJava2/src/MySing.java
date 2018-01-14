@@ -17,9 +17,10 @@ public class MySing extends JFrame {
 	private JButton clear, undo, redo,
 	save, restore, saveJPEG;
 	private MyDrawer drawer;
+	private MyClock myClock;
 	
 	public MySing() {
-		super("簽�??");
+		super("簽名");
 		setLayout(new BorderLayout());
 		
 		clear = new JButton("Clear");
@@ -28,9 +29,12 @@ public class MySing extends JFrame {
 		save = new JButton("Save");
 		restore = new JButton("Restore");
 		saveJPEG = new JButton("Save JPEG");
+		myClock = new MyClock();
+		
 		JPanel top = new JPanel(new FlowLayout());
 		top.add(clear); top.add(undo); top.add(redo);
 		top.add(save); top.add(restore); top.add(saveJPEG);
+		top.add(myClock);
 		add(top, BorderLayout.NORTH);
 		
 		drawer = new MyDrawer();

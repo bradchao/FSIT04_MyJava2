@@ -25,10 +25,7 @@ public class Racing extends JFrame {
 			add(lanes[i]);
 		}
 		
-		horses = new Horse[8];
-		for (int i=0; i<horses.length; i++) {
-			horses[i] = new Horse(i);
-		}
+
 		
 		
 		setSize(800, 480);
@@ -48,6 +45,14 @@ public class Racing extends JFrame {
 	}
 	
 	private void go() {
+		go.setEnabled(false);
+		for (int i=0; i<lanes.length; i++) {
+			lanes[i].setText((i+1) + ".");
+		}
+		horses = new Horse[8];
+		for (int i=0; i<horses.length; i++) {
+			horses[i] = new Horse(i);
+		}
 		for (int i=0; i<horses.length; i++) {
 			horses[i].start();
 		}
@@ -84,6 +89,7 @@ public class Racing extends JFrame {
 		for (int i=0; i<horses.length; i++) {
 			horses[i].interrupt();;
 		}
+		go.setEnabled(true);
 	}
 	
 	
