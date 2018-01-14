@@ -35,11 +35,27 @@ public class MainBoard extends JPanel {
 			public void mousePressed(MouseEvent event) {
 				// TODO Auto-generated method stub
 				super.mousePressed(event);
-				addNewBall(event.getX(), event.getY());
+			
+				if (!isGotBall(event.getX(), event.getY())) {
+					addNewBall(event.getX(), event.getY());
+				}
 			}
 			
 		});
 
+	}
+	
+	private boolean isGotBall(int eventX, int eventY) {
+		boolean isGotIt = false;
+		for (Ball ball : balls) {
+			if (eventX >= ball.ballX && eventX <= ball.ballX + ballW 
+					&& eventY >= ball.ballY && eventY <= ball.ballY+ballH) {
+				ball.cancel();
+				isGotIt = true;
+				break;
+			}
+		}
+		return isGotIt;
 	}
 	
 	private void addNewBall(int eventX, int eventY) {

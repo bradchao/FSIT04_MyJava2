@@ -26,5 +26,7 @@ class MyStop extends TimerTask {
 	@Override
 	public void run() {
 		timer.cancel();
+		timer.purge();
+		timer = null;
 	}
 }
