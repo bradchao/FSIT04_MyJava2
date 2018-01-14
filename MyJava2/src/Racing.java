@@ -10,6 +10,7 @@ public class Racing extends JFrame {
 	private JButton go;
 	private JLabel[] lanes;
 	private Horse[] horses;
+	private int rank;
 	
 	public Racing() {
 		super("Racing Game");
@@ -60,13 +61,28 @@ public class Racing extends JFrame {
 		public void run() {
 			for (int i=0; i<100; i++) {
 				lanes[num].setText(lanes[num].getText() + ">");
+				
+				if (i==99) {
+					//lanes[num].setText(lanes[num].getText() + ++rank);
+					lanes[num].setText(lanes[num].getText() + "WINNER");
+					cancelRacing();
+					break;
+				}
+				
 				try {
 					Thread.sleep(50 + (int)(Math.random()*200));
 				} catch (InterruptedException e) {
+					break;
 
 				}
 			}
 			
+		}
+	}
+	
+	private void cancelRacing() {
+		for (int i=0; i<horses.length; i++) {
+			horses[i].interrupt();;
 		}
 	}
 	
