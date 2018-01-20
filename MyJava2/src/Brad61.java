@@ -9,7 +9,7 @@ import java.net.Socket;
 public class Brad61 {
 
 	public static void main(String[] args) {
-		File source = new File("imgs/coffee.png");
+		File source = new File("imgs/coffee.gif");
 		byte[] buf = new byte[(int)source.length()];
 		try {
 			BufferedInputStream bin = 
@@ -19,7 +19,7 @@ public class Brad61 {
 			bin.close();
 			
 			Socket socket = new Socket(
-					InetAddress.getByName("10.21.100.73"),
+					InetAddress.getByName("127.0.0.1"),
 					7777);
 			BufferedOutputStream bout = 
 				new BufferedOutputStream(socket.getOutputStream());

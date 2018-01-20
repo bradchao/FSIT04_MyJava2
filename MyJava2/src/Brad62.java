@@ -15,7 +15,7 @@ public class Brad62 {
 			
 			byte[] buf = new byte[4096]; int len = -1;
 			FileOutputStream fout = 
-				new FileOutputStream("upload/newcoffee.png");
+				new FileOutputStream("upload/newcoffee.gif");
 			while ( (len = bin.read(buf)) != -1) {
 				fout.write(buf, 0, len);
 			}

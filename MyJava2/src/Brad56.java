@@ -6,7 +6,7 @@ import java.net.SocketException;
 public class Brad56 {
 	// UDP Sender
 	public static void main(String[] args) {
-		byte[] buf = "Hello, World".getBytes();
+		byte[] buf = "Hello, 資策會".getBytes();
 		try {
 			DatagramSocket socket =
 				new DatagramSocket();
