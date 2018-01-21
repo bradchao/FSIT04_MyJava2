@@ -23,15 +23,19 @@ public class Brad66 {
 	public static void main(String[] args) {
 		
 		try {
-			SSLContext ctx = SSLContext.getInstance("TLS");
-	        ctx.init(new KeyManager[0], new TrustManager[] {new DefaultTrustManager()}, new SecureRandom());
-	        SSLContext.setDefault(ctx);
+//			SSLContext ctx = SSLContext.getInstance("TLS");
+//	        ctx.init(new KeyManager[0], new TrustManager[] {new DefaultTrustManager()}, new SecureRandom());
+//	        SSLContext.setDefault(ctx);
 			
 			
-			URL url = new URL("https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=8");
-			HttpsURLConnection conn = 
-					(HttpsURLConnection)url.openConnection();
+//			URL url = new URL("https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=8");
+//			HttpsURLConnection conn = 
+//					(HttpsURLConnection)url.openConnection();
 	
+			URL url = new URL("http://gis.taiwan.net.tw/XMLReleaseALL_public/scenic_spot_C_f.json");
+			HttpURLConnection conn = 
+					(HttpURLConnection)url.openConnection();
+			
 			conn.connect();
 			
 			BufferedReader reader =
@@ -46,10 +50,10 @@ public class Brad66 {
 			reader.close();
 			
 			
-			System.out.println(sbJSON);
-			//String temp = trimJSON(sbJSON.toString()) + "}}";
-			//System.out.println(temp.substring(0,10));
-			//parseJSONV2(sbJSON.toString());
+			//System.out.println(sbJSON);
+			String temp = trimJSON(sbJSON.toString()) + "}}";
+			System.out.println(temp);
+			parseJSONV2(temp);
 		} catch (Exception e) {
 			System.out.println("Ｅ" +e.toString());
 		}
@@ -76,8 +80,12 @@ public class Brad66 {
 	}
 	
 	static void parseJSONV2(String strJSON) {
-		JSONArray root = new JSONArray(strJSON);
-		System.out.println(root.length());
+		JSONObject root = new JSONObject(strJSON);
+		JSONObject head = root.getJSONObject("XML_Head");
+		JSONObject infos = head.getJSONObject("Infos");
+		JSONArray info = infos.getJSONArray("info");
+		System.out.println(info.length());
+		
 	}
 	
     private static class DefaultTrustManager implements X509TrustManager {
