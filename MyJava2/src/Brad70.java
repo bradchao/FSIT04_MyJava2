@@ -36,6 +36,19 @@ public class Brad70 {
 			return 2;
 		};
 		
+		new Thread(()-> {
+			for (int i=0; i<10; i++) {
+				System.out.println(i);
+			}
+		}).start();
+		
+		new Thread() {
+			public void run() {
+				System.out.println("OK");
+			}
+		}.start();
+		
+		
 	}
 	static void test(Test11 obj) {
 		System.out.println(obj.m1(3, 4));
